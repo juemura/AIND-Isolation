@@ -67,7 +67,6 @@ def custom_score_2(game, player):
     float
         The heuristic value of the current game state to the specified player.
     """
-    # TODO: finish this function!
     if game.is_loser(player):
         return float("-inf")
 
@@ -101,7 +100,6 @@ def custom_score_3(game, player):
     float
         The heuristic value of the current game state to the specified player.
     """
-    # TODO: finish this function!
     if game.is_loser(player):
         return float("-inf")
 
@@ -124,15 +122,15 @@ def custom_score_3(game, player):
     opp_moves = game.get_legal_moves(game.get_opponent(player))
     for m in opp_moves:
         if 1 < m[0] < game.height - 2 and 1 < m[1] < game.width - 2:
-            eval += 8
+            eval -= 8
         elif ((m[0] == 1 or m[0] == game.height - 2) and 1 < m[1] < game.width - 2) or (1 < m[0] < game.height - 2 and (m[1] == 1 or m[1] == game.height - 2)):
-            eval += 6
+            eval -= 6
         elif m == (0, 0) or m == (0, game.width-1) or m == (game.height -1, 0) or m == (game.height - 1, game.width - 1):
-            eval += 2
+            eval -= 2
         elif m == (0, 1) or m == (1, 0) or m == (0, game.width-2) or m == (1, game.width-1) or m == (game.height-2, 0) or m == (game.height-1, 1) or m == (game.height-1, game.width-2) or m == (game.height-2, game.width-1):
-            eval += 3
+            eval -= 3
         else:
-            eval += 4
+            eval -= 4
     return eval
 
 
